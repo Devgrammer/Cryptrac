@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { useMoralis } from "react-moralis";
+import { Home } from './views/home';
+import Routing from './Router/route'
 
-function App() {
+
+
+
+
+export default function App() {
+  const { isAuthenticated } = useMoralis();
+  console.log("isAuthenticated: ", isAuthenticated);
+
+
+  if (!isAuthenticated) {
+    return <Home />
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Routing />
+    </>
+  )
+
+
+
 }
 
-export default App;
+
+
+
+
+

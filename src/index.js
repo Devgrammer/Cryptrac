@@ -3,11 +3,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { MoralisProvider } from "react-moralis";
+import  {Provider} from 'react-redux'
+import { store } from './Redux/Store/store';
+import  Routing from './Router/route'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const appID ="yvJG1eQ2m3zndQGDGsLH6lrFBEDDYLaWl8cl9PqZ";
+const serverURL ="https://e9mqslzswkh0.usemoralis.com:2053/server";
+
 root.render(
   <React.StrictMode>
-    <App />
+    <MoralisProvider appId={appID} serverUrl={serverURL}>
+      <Provider store={store}>
+        <Router forceRefresh={ true } >
+          <App/>
+       
+        </Router>
+      </Provider> 
+    </MoralisProvider> 
   </React.StrictMode>
 );
 
