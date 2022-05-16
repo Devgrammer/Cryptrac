@@ -1,6 +1,5 @@
 import React from 'react'
 import { Routes, Route, } from "react-router-dom";
-import { Home } from '../views/home'
 import CoinTracker from '../views/coinTracker'
 import CoinDetail from '../views/coinDetail'
 
