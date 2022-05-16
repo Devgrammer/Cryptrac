@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { FcLike } from 'react-icons/fc';
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getCoinData } from '../Redux/Slice/coinSlice';
@@ -9,12 +8,23 @@ import { useMoralis } from "react-moralis";
 const CoinTracker = () => {
     const dispatch = useDispatch();
     let navigate = useNavigate();
-    const { isauthenticated, logout } = useMoralis();
-    const coinData = useSelector((state) => state?.coinData?.data);
-
+    const { logout } = useMoralis();
+    const [searchinput, setSearchInput]=useState('')
+   
     useEffect(() => {
         dispatch(getCoinData());
+        
     }, []);
+    const coinData = useSelector((state) => state?.coinData?.data);
+
+
+
+
+    const handleSearch=(e)=>{
+setSearchInput(e.target.value);
+    }
+
+ 
 
     return (
         <div className="bg-gray-900 flex-col  h-auto justify-center items-center pt-24">
@@ -22,9 +32,10 @@ const CoinTracker = () => {
             <h1 className="mt-1 text-center text-4xl font-extrabold text-transparent uppercase tracking-tighest sm:text-5xl lg:text-7xl bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text">Cryptrac</h1>
             <h1 className="mt-1 text-center text-sm font-extrabold text-transparent uppercase tracking-tighest sm:text-md lg:text-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text">Track the future of exchange</h1>
             <h1 className="mt-6 text-center text-sm font-extrabold text-transparent uppercase tracking-tighest sm:text-md lg:text-md bg-gradient-to-r from-green-500 to-green-700 bg-clip-text">#1 Crypto Currency tracker in 2022</h1>
-
+            <div className='w-full flex justify-center mt-8'><input type="text" className="mt-1 w-1/3 h-16 px-3 py-2 bg-gray-300 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block  rounded-md sm:text-sm focus:ring-1" placeholder='Search here'  onChange={ handleSearch } /></div>
             <div className=' bg-gray-900 flex h-auto justify-center items-center pt-16'>
                 <div className='w-11/12 flex justify-center '>
+                  
                     <table className="table-auto shadow-sm p-4 mb-44 overflow-y-scroll ">
                         <thead className='rounded-xl sticky top-0 '>
                             <tr className=' bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-gray-300'>
@@ -39,7 +50,14 @@ const CoinTracker = () => {
                         </thead>
                         <tbody className="divide-y divide-gray-600 ">
                             {
-                                coinData?.length > 0 && coinData?.slice(0, 15)?.map((coin, index) => {
+                                coinData?.length > 0 && coinData?.slice(0,15)?.filter(Item=>{
+                                    if (searchinput === " ")
+                                        return Item;
+                                    else if (Item?.name?.toString().toLowerCase()?.includes(searchinput?.toString()?.toLowerCase( ))) {
+                                        return Item;
+                                    }
+                                    return 0;
+                                })?.map((coin, index) => {
                                     return (
 
                                         <tr className='mt-6 bg-white bg-opacity-20 backdrop-blur-3xl hover:bg-white hover:bg-opacity-30 hover:backdrop-blur-xl' key={ index } onClick={ () => {

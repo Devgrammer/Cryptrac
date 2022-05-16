@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { MoralisProvider } from "react-moralis";
 import  {Provider} from 'react-redux'
 import { store } from './Redux/Store/store';
-import  Routing from './Router/route'
 import { BrowserRouter as Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

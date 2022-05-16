@@ -4,7 +4,7 @@ import { useMoralis } from "react-moralis";
 
 
 export const Home = () => {
-    const { authenticate, signup } = useMoralis();
+    const { authenticate } = useMoralis();
 
     return (
         <div className=' backdrop-filter home-bg bg-fixed w-full h-screen z-0 flex  justify-between items-center px-44 backdrop-contrast-0  ' >
