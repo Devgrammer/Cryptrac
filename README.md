@@ -1,3 +1,46 @@
+# CryphTracker
+
+A real time Cryptocurrency tracker web app.
+
+# Tech Used
+> React JS
+> TailwindCSS
+> Redux toolkit
+> Coingeko API
+> Morallis API
+
+
+#Objective Achieved
+-
++ Login Page, Tracker Page and Currency Detail Page
++ Login via MetaMask Authentication
++ Displayed Top 15 Cryptos with their essential Detail on Page 1
++ Deep Detail and Visualization through graphs and chart of a specific slected Crypto from list.
++ UI is responisve
+
+#Screenshots
+
+
+
+
+## Screenshots
+
+![App Screenshot](https://snipboard.io/2JjZgk.jpg?text=App+Screenshot+Here)
+-
+![App Screenshot](https://snipboard.io/Nm2h1d.jpg?text=App+Screenshot+Here)
+-
+![App Screenshot](https://snipboard.io/ABbDS5.jpg?text=App+Screenshot+Here)
+-
+![App Screenshot](https://snipboard.io/6EcWBn.jpg?text=App+Screenshot+Here)
+
++ Hope you like it
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
